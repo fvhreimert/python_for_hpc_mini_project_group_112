@@ -1,0 +1,5 @@
+Error: num_floorplans and num_processes must be positive integers.
+
+real	0m0.365s
+user	0m0.101s
+sys	0m0.058s

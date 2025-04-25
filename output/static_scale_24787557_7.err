@@ -1,0 +1,5 @@
+python: can't open file '/work3/s203520/python_and_high_performance_computing/mini_project/simulate_parallel_static_minimal.py': [Errno 2] No such file or directory
+
+real	0m0.146s
+user	0m0.041s
+sys	0m0.030s

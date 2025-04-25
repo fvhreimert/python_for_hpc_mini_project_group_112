@@ -1,0 +1,27 @@
+n-62-27-19(s203520) $ cd /work3/s203520/python_and_high_performance_computing/mini_project
+(env1) /work3/s203520/python_and_high_performance_computing/mini_project
+n-62-27-19(s203520) $ kernprof -l -v profile_jacobi_simulation.py 5
+building_id, mean_temp, std_temp, pct_above_18, pct_below_15
+10000, 14.01233878811275, 6.367431059312565, 30.941014791508444, 55.542295034537624
+10009, 11.000135812436373, 5.811144379826625, 16.6712734948236, 74.9723590310584
+10014, 14.744169941950119, 7.037733284673848, 38.26367541377415, 52.80837116508215
+10019, 14.735524480624482, 7.030325006703675, 38.14915412864569, 52.92926826787113
+10029, 10.616037322820358, 6.317331938274926, 18.25563221896085, 74.51301795448481
+Wrote profile results to profile_jacobi_simulation.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 76.9476 s
+File: profile_jacobi_simulation.py
+Function: jacobi at line 13
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    13                                           @profile
+    14                                           def jacobi(u, interior_mask, max_iter, atol=1e-6):
+    15         5       3541.1    708.2      0.0      u = np.copy(u)
+    16                                           
+    17     28423      20823.5      0.7      0.0      for i in range(max_iter):
+    18                                                   # Compute average of left, right, up and down neighbors, see eq. (1)
+    19     28423   48240757.0   1697.2     62.7          u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+    20     28423    7142735.6    251.3      9.3          u_new_interior = u_new[interior_mask]
+    21     28423   14910793.1    524.6     19.4          delta = np.abs(u[1

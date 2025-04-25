@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/work3/s203520/python_and_high_performance_computing/mini_project/simulate.py", line 70, in <module>
+    u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
+  File "/work3/s203520/python_and_high_performance_computing/mini_project/simulate.py", line 22, in jacobi
+    delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
+KeyboardInterrupt

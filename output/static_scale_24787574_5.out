@@ -1,0 +1,5 @@
+Job Array Task Index (LSB_JOBINDEX): 5
+Worker Array Index: 4
+Number of Workers (P) for this task: 22,
+Running simulate_parallel_static.py for N=20 with P=22, workers...
+Task 5 finished.
