@@ -1,8 +1,8 @@
 #!/bin/bash
-#BSUB -J static_scale[1-7]      
+#BSUB -J parallel_scaling[1-10]       
 #BSUB -q hpc
 #BSUB -W 45                      
-#BSUB -n 12                      
+#BSUB -n 18                      
 #BSUB -R "rusage[mem=8GB]"       
 #BSUB -R "select[model==XeonGold6126]"
 #BSUB -o output/static_scale_%J_%I.out 
@@ -10,14 +10,13 @@
 #BSUB -B
 #BSUB -N
 
-PYTHON_SCRIPT="simulate_parallel_static.py"
+PYTHON_SCRIPT="simulate_parallel_scaling.py" 
 NUM_FLOORPLANS=20
 
-WORKER_ARRAY=(1 2 4 6 8 10 12)
+WORKER_ARRAY=(1 2 4 6 8 10 12 14 16 18) 
 
 INDEX=$LSB_JOBINDEX
 ARRAY_INDEX=$((INDEX - 1))
-
 NUM_WORKERS=${WORKER_ARRAY[$ARRAY_INDEX]}
 
 
@@ -30,5 +29,4 @@ conda activate env1
 
 echo "Running ${PYTHON_SCRIPT} for N=${NUM_FLOORPLANS} with P=${NUM_WORKERS} workers..."
 time python "${PYTHON_SCRIPT}" "${NUM_FLOORPLANS}" "${NUM_WORKERS}"
-
 echo "Task $INDEX finished."
